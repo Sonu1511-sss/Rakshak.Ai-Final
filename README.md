@@ -174,14 +174,23 @@ The user interface is built with **React.js** and styled with **Tailwind CSS**, 
 
 ### 🔧 Steps
 
-```bash
 # 1. Clone the repository
-git clone [https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git](https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git)
+git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git
 cd Rakshak.Ai-Final
 
-# 2. Build and Run with Docker Compose
-docker-compose up --build
-```
+# 2. Install frontend dependencies and start frontend server
+cd src
+npm install
+npm run dev
+# Frontend: http://localhost:5173 (or as configured)
+
+# 3. In a new terminal, install backend dependencies and start backend server
+cd ..
+npm install
+node server.js # Or 'npm start'
+# Backend: http://localhost:5000
+
+# Ensure MongoDB is running and accessible to the backend.
 
 Then visit:
 
