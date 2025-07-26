@@ -1,162 +1,100 @@
-# 🔰 Rakshak.AI – Real-Time Cyber Threat Detection & Monitoring Platform
+# 🔐 Rakshak.AI – Smart Real-Time Threat Detection System
 
-## ✅ Technologies Used
+Rakshak.AI is an advanced cybersecurity platform developed as part of the [Triwizardathon Hackathon](https://triwizardathon.com/). It intelligently detects and blocks **unauthorized access**, **malicious IPs**, **DDoS**, and **brute-force attacks** in **real-time**, ensuring your system remains secure and protected at all times.
 
-- **Frontend:** React.js, Tailwind CSS, Axios, React Hot Toast, Chart.js
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (via Docker)
-- **Real-Time Data:** Polling (with future support for Socket.IO)
-- **GeoIP & ASN Detection:** ip-api.com, ipinfo.io
-- **Threat Intelligence APIs:** AbuseIPDB, VirusTotal (optional)
-- **DevOps & Deployment:** Docker, Docker Compose
+---
+
+## 🚀 Key Features
+
+- 🔍 **Real-Time Traffic Monitoring** – Instantly view traffic logs and geolocation data
+- 🛡️ **Threat Detection & Prevention** – Auto-blocks suspicious or malicious IPs
+- 👮 **Role-based Dashboards** – Separate interfaces for Admin and Users
+- 🌐 **Geolocation Tracking** – Detects country of origin of IPs using geo lookup
+- ⚠️ **Attack Simulation Tools** – Simulate Brute-force & DDoS attacks for testing
+- 📦 **Docker Support** – Fully containerized using `docker-compose`
+
+---
+
+## 🧠 Tech Stack
+
+**Frontend**: React.js, Tailwind CSS  
+**Backend**: Node.js, Express.js, MongoDB, JWT  
+**Python**: DDoS & Brute-force Attack Simulator  
+**Other Tools**: Docker, IP Quality Score API, GeoIP Lookup
 
 ---
 
 ## 📁 Folder Structure
 
-```
-bolt-ai/
+```bash
+Rakshak.Ai/
 ├── client/
 │   ├── src/
 │   │   ├── components/           # Navbar, Dashboard, AttackSimulator, etc.
 │   │   ├── pages/                # Login.jsx, AdminDashboard.jsx, UserDashboard.jsx
-│   │   ├── context/              # AuthContext.jsx for state management
+│   │   ├── context/              # AuthContext.jsx for auth state
 │   │   └── utils/                # axiosConfig.js, geoFlag.js
-│   └── tailwind.config.js       # Styling config
+│   └── tailwind.config.js       # TailwindCSS configuration
 │
 ├── server/
-│   ├── routes/                  # API routes – logs.js, auth.js, control.js
+│   ├── routes/                  # logs.js, auth.js, control.js – API routes
 │   ├── middleware/              # Logging and Auth Middleware
 │   ├── models/                  # Mongoose Models – Log, User, Stats, BlockedIP
-│   ├── utils/                   # Utility files – abuseCheck.js, geoLookup.js, jwtUtils.js
-│   └── server.js                # Entry point for Express server
+│   ├── utils/                   # abuseCheck.js, geoLookup.js, jwtUtils.js
+│   └── server.js                # Express server entry point
 │
-├── db/                         # MongoDB Docker setup
-├── attack-simulator/           # DDoS & Brute-force simulation scripts
-├── docker-compose.yml          # Docker orchestration
-└── README.md                   # Project Documentation
-```
+├── db/                         # MongoDB container setup
+├── attack-simulator/           # Python scripts for simulating attacks
+├── docker-compose.yml          # Orchestrates all services
+└── README.md                   # Documentation
 
----
+🔒 Dashboard Overview
+👑 Admin Dashboard
+View all traffic logs in real-time
 
-## 🔐 Authentication System
+Auto-block malicious IPs
 
-- JWT-based secure login with **Admin** and **User** roles
-- Role-based routing and dashboard access
+See attack attempts by country
 
----
+Manually block or unblock IPs
 
-## 📊 Admin Dashboard Features
+👤 User Dashboard
+Monitor personal logs
 
-- **Live Stats Panel:**
-  - Total Requests, Threats Blocked, Alerts Triggered
-  - Countries Tracked, Anomalies Detected, Blocked IP Count
-  - Percent growth comparison (last 7 days)
-- **Charts and Graphs:** Using Chart.js for real-time data
+View recent activity
 
----
+Secure personal access
 
-## 🌍 GeoIP + Country Mapping
+⚙️ Real-Time Logging & Detection
+GeoIP + Abuse IP Database: Each IP is checked against abuse records
 
-- IP addresses are resolved to countries using `ip-api.com`
-- Each IP in logs is shown with country name and flag emoji
-- Country-wise filtering for insights
+Country Flag Integration: View where threats are coming from
 
----
+Log Storage: All traffic logs stored in MongoDB with timestamps
 
-## 📡 Real-Time Traffic Logs
+💻 Attack Simulator
+Located inside attack-simulator/ folder.
 
-- Traffic is fetched every 3 seconds from the backend
-- Color-coded table rows based on threat level
-- Displays: IP, ISP, Method, Route, Time, Threat Type
+Brute Force Script: Tests how the system responds to login attacks
 
----
+DDoS Simulator: Sends multiple fake requests to mimic traffic floods
 
-## 💥 Attack Simulation Module
+👥 Team – Code Genius
+Name	Role
+Chandrabhan Gadeshwar	Backend Developer, Python Scripts
+Shubham Uprade	Full Stack Developer – Frontend & Backend
 
-- Built-in attack testing using `/attack-simulator/`
-- Scripts:
-  - `flood.sh` → DDoS HTTP Flood
-  - `brute-force.sh` → Login attempts
-  - `stuffing.js` → Credential stuffing
-- React button trigger also available in UI for demo
+🏆 Hackathon Participation
+This project was built for the Triwizardathon Hackathon.
+It showcases real-time security intelligence, automation, and safe simulation of attacks in a production-ready environment.
 
----
+# 1. Clone the repo
+git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git
 
-## 🛡️ Threat Detection & Blocking
+# 2. Navigate into the folder
+cd Rakshak.Ai-Final
 
-- Traffic is evaluated using custom `trafficLogger` middleware
-- Threat types:
-  - DDoS, Brute-force, Bot, Unknown Pattern
-- Auto-block logic for malicious IPs
-- Admin panel allows manual unblock/block control
-
----
-
-## 🧭 UI Navigation
-
-- Navbar adapts based on user role
-- Routes include:
-  - `/login`
-  - `/dashboard`
-  - `/logs`
-  - `/alerts`
-  - `/control`
-  - `/simulators`
-  - `/logout`
-
----
-
-## 🔁 Dev Setup & Run
-
-```bash
-git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final
-cd bolt-ai
+# 3. Start services with Docker
 docker-compose up --build
-```
 
-Visit:
-- Frontend → http://localhost:5173
-- Backend API → http://localhost:5000
-
----
-
-## 📥 Detection Log Format
-
-| IP Address | Country | ISP | Method | URL | Time | Threat | Status |
-|------------|---------|-----|--------|-----|------|--------|--------|
-| 92.183.XX.XX | 🇮🇳 India | Airtel | GET | /api/login | 13:41 | Brute Force | Blocked |
-
----
-
-## 🔐 Privacy & Compliance
-
-- All user data secured using JWT
-- Blocked IPs stored securely
-- Optional integrations with external reputation APIs
-
----
-
-## 🚀 Future Roadmap
-
-- ML-based Threat Scoring
-- Socket.IO Live Stream Logs
-- Global Attack Map (Heatmap)
-- Email/SMS Alerts via Twilio
-
----
-
-## 👨‍💻 Ideal For:
-
-- Hackathons - https://triwizardathon.com/
-- Cybersecurity Demonstrations
-- Hackathon Project
-- Real-world PoC Security Systems
-
----
-
-## 🔗 Credits
-
-- Developed by Team Rakshak 💻
-- Based on Bolt.AI Architecture
-- Contributions welcome via GitHub PR
+# App will be live at: http://localhost:3000
