@@ -3,6 +3,11 @@
 
 **Rakshak.AI** is an intelligent, real-time cyber threat detection and protection system designed to monitor, detect, and block unauthorized access, malicious IPs, and cyberattacks as they happen. Built for Hackathons like [Triwizardathon](https://triwizardathon.com/), this project provides a full-stack secure infrastructure using cutting-edge tools.
 
+## 🚀 Live Demo
+
+👉 [Click here to view Rakshak.AI](https://rakshak-ai-final.vercel.app/)
+
+
 🔗 **Live Project URL**: [https://rakshak-ai-final.vercel.app/](https://rakshak-ai-final.vercel.app/)
 
 ---
