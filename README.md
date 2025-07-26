@@ -14,68 +14,197 @@
 
 ---
 
-## 🧩 Project Structure
 
+## 📁 Folder Structure
+
+```bash
 Rakshak.Ai/
 ├── client/
-│ ├── src/
-│ │ ├── components/ # Reusable UI components like Navbar, AttackSimulator, RealTimeLogs
-│ │ ├── pages/ # Main views: Login.jsx, AdminDashboard.jsx, UserDashboard.jsx
-│ │ ├── context/ # AuthContext.jsx for authentication state
-│ │ └── utils/ # axiosConfig.js, geoFlag.js for API setup and IP flagging
-│ └── tailwind.config.js # Tailwind CSS configuration
+│   ├── src/
+│   │   ├── components/           # Navbar, Dashboard, AttackSimulator, etc.
+│   │   ├── pages/                # Login.jsx, AdminDashboard.jsx, UserDashboard.jsx
+│   │   ├── context/              # AuthContext.jsx for auth state
+│   │   └── utils/                # axiosConfig.js, geoFlag.js
+│   └── tailwind.config.js       # TailwindCSS configuration
 │
 ├── server/
-│ ├── routes/ # API Endpoints - logs.js, auth.js, control.js
-│ ├── middleware/ # Logging & Authorization Middleware
-│ ├── models/ # MongoDB Schemas - Log, User, Stats, BlockedIP
-│ ├── utils/ # Core logic - abuseCheck.js, geoLookup.js, jwtUtils.js
-│ └── server.js # Express Server Entry Point
+│   ├── routes/                  # logs.js, auth.js, control.js – API routes
+│   ├── middleware/              # Logging and Auth Middleware
+│   ├── models/                  # Mongoose Models – Log, User, Stats, BlockedIP
+│   ├── utils/                   # abuseCheck.js, geoLookup.js, jwtUtils.js
+│   └── server.js                # Express server entry point
 │
-├── db/ # MongoDB setup for Docker
-├── attack-simulator/ # Scripts to simulate DDoS & Brute-force attacks
-├── docker-compose.yml # Docker container orchestration
-└── README.md # 📘 This Documentation
+├── db/                         # MongoDB container setup
+├── attack-simulator/           # Python scripts for simulating attacks
+├── docker-compose.yml          # Orchestrates all services
+└── README.md                   # Documentation
 
+# 🛡️ Rakshak.AI - Real-Time Threat Detection & Defense Dashboard
+
+Rakshak.AI is a full-stack cybersecurity platform designed to detect, simulate, and block real-time web threats. It provides both **Admin** and **User Dashboards**, live traffic monitoring, attack simulation, and integration with security APIs like AbuseIPDB and Geo-IP services.
 
 ---
 
 ## 🌐 Features Overview
 
-### 🔐 Admin & User Dashboard
-- **Admin Dashboard**:  
-  View real-time traffic logs, IP lookup with geo flags, total blocked threats, and manual block control.
-- **User Dashboard**:  
-  Simulate attacks, test live defense responses, and view IP reputation.
+### 🔐 Authentication System
+Role-based login secured using JWT tokens.
 
-### 📊 Real-Time Logs & Threat Detection
-- Tracks suspicious traffic and displays live attack logs with details like IP, location, time, type of attack.
-- Automatically flags and blocks abusive IPs using AbuseIPDB API integration.
+- **Admin**: Full access to dashboards, logs, IP controls, and simulators.
+- **User**: Limited access to simulation tools and basic logs.
+- Secure routing ensures **no unauthorized access** to admin resources.
 
-### ⚙️ Attack Simulation
-- Built-in simulator allows testing of brute-force and DDoS scenarios to observe how Rakshak.AI handles them.
+---
 
-### 🚀 Dockerized & Scalable
-- Fully dockerized for easy setup.
-- Supports scalable deployment with MongoDB, Node.js, and React apps in containers.
+### 📊 Admin Dashboard Features
+The admin panel is designed for real-time visibility and control:
+
+- **Live Stats Panel**:
+  - Total requests
+  - Threats blocked
+  - Alerts triggered
+  - Countries tracked
+  - Anomalies detected
+  - Blocked IPs
+
+- **Interactive Graphs (Chart.js)**:
+  - Weekly trends of traffic
+  - Safe vs malicious request patterns
+
+---
+
+### 🌍 Geo-IP Detection & Mapping
+- Integrates with **ip-api.com** and **ipinfo.io**
+- Converts each IP into:
+  - Country name & flag
+  - ISP
+  - Geo coordinates
+- Filter and analyze by country to detect region-based attacks.
+
+---
+
+### 📡 Real-Time Traffic Logs
+Live monitoring and updating logs every 3 seconds.
+
+- Logs contain:
+  - IP Address
+  - Country
+  - ISP
+  - Method & URL
+  - Time of request
+  - Threat detected (if any)
+  - Status (Safe, Suspicious, Blocked)
+
+- **Color-coded Log View**:
+  - 🟩 Green: Safe
+  - 🟨 Yellow: Suspicious
+  - 🟥 Red: Blocked
+
+---
+
+### 💥 Attack Simulation Tools
+Simulate attacks for learning, testing, and demoing defense:
+
+- `flood.sh`: HTTP Flood (DDoS simulation)
+- `brute-force.sh`: Repeated login attempts
+- `stuffing.js`: Credential stuffing simulation
+- Also accessible via the Web UI Simulator tab
+
+---
+
+### 🛡️ Real-Time Threat Detection
+AI-like backend logic to detect and block in real time:
+
+- Detects:
+  - Brute-force patterns
+  - DDoS/flooding attempts
+  - Bot headers & anomalies
+- **IP Blocking**:
+  - Automatically blocks IPs
+  - Stores in MongoDB
+  - Admin can manually unblock via dashboard
+
+---
+
+### 🧭 UI Navigation & Pages
+Built with **React.js + Tailwind CSS**, routes are role-based:
+
+| Path             | Description                         |
+|------------------|-------------------------------------|
+| `/login`         | Secure login for Admin & User       |
+| `/dashboard`     | Role-based dashboard                |
+| `/logs`          | Real-time traffic logs              |
+| `/alerts`        | View blocked/malicious alerts       |
+| `/control`       | Admin control for IP blocking       |
+| `/simulators`    | Trigger test attacks                |
+| `/logout`        | End session securely                |
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: React.js, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB with Mongoose
-- **Docker**: Multi-container setup using `docker-compose`
-- **Security APIs**: AbuseIPDB for reputation scoring, GeoIP Lookup
-- **Others**: JWT Auth, Context API, Axios, Toastify, Chart.js
+| Layer       | Stack                                 |
+|-------------|----------------------------------------|
+| Frontend    | React.js, Tailwind CSS, Axios, Toastify |
+| Backend     | Node.js, Express.js, JWT Auth         |
+| Database    | MongoDB with Mongoose ORM             |
+| Security    | AbuseIPDB API, ip-api.com, ipinfo.io  |
+| Charts      | Chart.js for real-time data viz       |
+| DevOps      | Docker + Docker Compose               |
 
 ---
 
-## 📦 How to Run the Project
+## 🧪 Sample Log Format
 
-### Step 1: Clone the Repository
+
+---
+
+## 📦 How to Run the Project (Dev Setup)
+
+### Prerequisites
+- Docker & Docker Compose installed
+- Ports `5173`, `5000`, and `27017` free
+
+### 🔧 Steps
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git
 cd Rakshak.Ai-Final
+
+# 2. Build and Run with Docker
+docker-compose up --build
+
+Then visit:
+Frontend – http://localhost:3000
+Backend – http://localhost:5000
+
+🔐 Security & Privacy
+JWT-based token authentication
+
+Secure routing for sensitive routes
+
+Logs and IPs stored in encrypted MongoDB collections
+
+Optional integration with AbuseIPDB for enhanced protection
+
+🚀 Future Roadmap
+🧠 AI-powered anomaly detection
+
+🌐 Live heatmap of global threats
+
+🔔 Email/SMS alerting system (Twilio)
+
+📡 WebSocket-based live updates
+
+📊 Machine Learning for threat scoring
+
+👥 Who Should Use This?
+👨‍💻 Hackathon & Cybersecurity Students
+
+🧪 Pen-testing & Security Simulation
+
+🏢 Internal Security Teams for monitoring
+
+📚 Trainers/Institutions teaching real-time defense
+
