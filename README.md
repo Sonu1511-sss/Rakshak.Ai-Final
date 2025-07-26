@@ -1,100 +1,81 @@
-# 🔐 Rakshak.AI – Smart Real-Time Threat Detection System
+# 🚨 Rakshak.AI - Real-Time Threat Detection & Protection System
 
-Rakshak.AI is an advanced cybersecurity platform developed as part of the [Triwizardathon Hackathon](https://triwizardathon.com/). It intelligently detects and blocks **unauthorized access**, **malicious IPs**, **DDoS**, and **brute-force attacks** in **real-time**, ensuring your system remains secure and protected at all times.
-
----
-
-## 🚀 Key Features
-
-- 🔍 **Real-Time Traffic Monitoring** – Instantly view traffic logs and geolocation data
-- 🛡️ **Threat Detection & Prevention** – Auto-blocks suspicious or malicious IPs
-- 👮 **Role-based Dashboards** – Separate interfaces for Admin and Users
-- 🌐 **Geolocation Tracking** – Detects country of origin of IPs using geo lookup
-- ⚠️ **Attack Simulation Tools** – Simulate Brute-force & DDoS attacks for testing
-- 📦 **Docker Support** – Fully containerized using `docker-compose`
+**Rakshak.AI** is an intelligent, real-time cyber threat detection and protection system designed to monitor, detect, and block unauthorized access, malicious IPs, and cyberattacks as they happen. Built for Hackathons like [Triwizardathon](https://triwizardathon.com/), this project provides a full-stack secure infrastructure using cutting-edge tools.
 
 ---
 
-## 🧠 Tech Stack
+## 🧠 Built By Team: **Code Genius**
 
-**Frontend**: React.js, Tailwind CSS  
-**Backend**: Node.js, Express.js, MongoDB, JWT  
-**Python**: DDoS & Brute-force Attack Simulator  
-**Other Tools**: Docker, IP Quality Score API, GeoIP Lookup
+### 👥 Contributors:
+- **Shubham Uprade**  
+  *Frontend, Backend Development, UI/UX, Dashboard Design*
+- **Chandrabhan Gadeshwar**  
+  *Backend API, Python Scripting, Threat Simulation, Docker Integration*
 
 ---
 
-## 📁 Folder Structure
+## 🧩 Project Structure
 
-```bash
 Rakshak.Ai/
 ├── client/
-│   ├── src/
-│   │   ├── components/           # Navbar, Dashboard, AttackSimulator, etc.
-│   │   ├── pages/                # Login.jsx, AdminDashboard.jsx, UserDashboard.jsx
-│   │   ├── context/              # AuthContext.jsx for auth state
-│   │   └── utils/                # axiosConfig.js, geoFlag.js
-│   └── tailwind.config.js       # TailwindCSS configuration
+│ ├── src/
+│ │ ├── components/ # Reusable UI components like Navbar, AttackSimulator, RealTimeLogs
+│ │ ├── pages/ # Main views: Login.jsx, AdminDashboard.jsx, UserDashboard.jsx
+│ │ ├── context/ # AuthContext.jsx for authentication state
+│ │ └── utils/ # axiosConfig.js, geoFlag.js for API setup and IP flagging
+│ └── tailwind.config.js # Tailwind CSS configuration
 │
 ├── server/
-│   ├── routes/                  # logs.js, auth.js, control.js – API routes
-│   ├── middleware/              # Logging and Auth Middleware
-│   ├── models/                  # Mongoose Models – Log, User, Stats, BlockedIP
-│   ├── utils/                   # abuseCheck.js, geoLookup.js, jwtUtils.js
-│   └── server.js                # Express server entry point
+│ ├── routes/ # API Endpoints - logs.js, auth.js, control.js
+│ ├── middleware/ # Logging & Authorization Middleware
+│ ├── models/ # MongoDB Schemas - Log, User, Stats, BlockedIP
+│ ├── utils/ # Core logic - abuseCheck.js, geoLookup.js, jwtUtils.js
+│ └── server.js # Express Server Entry Point
 │
-├── db/                         # MongoDB container setup
-├── attack-simulator/           # Python scripts for simulating attacks
-├── docker-compose.yml          # Orchestrates all services
-└── README.md                   # Documentation
+├── db/ # MongoDB setup for Docker
+├── attack-simulator/ # Scripts to simulate DDoS & Brute-force attacks
+├── docker-compose.yml # Docker container orchestration
+└── README.md # 📘 This Documentation
 
-🔒 Dashboard Overview
-👑 Admin Dashboard
-View all traffic logs in real-time
 
-Auto-block malicious IPs
+---
 
-See attack attempts by country
+## 🌐 Features Overview
 
-Manually block or unblock IPs
+### 🔐 Admin & User Dashboard
+- **Admin Dashboard**:  
+  View real-time traffic logs, IP lookup with geo flags, total blocked threats, and manual block control.
+- **User Dashboard**:  
+  Simulate attacks, test live defense responses, and view IP reputation.
 
-👤 User Dashboard
-Monitor personal logs
+### 📊 Real-Time Logs & Threat Detection
+- Tracks suspicious traffic and displays live attack logs with details like IP, location, time, type of attack.
+- Automatically flags and blocks abusive IPs using AbuseIPDB API integration.
 
-View recent activity
+### ⚙️ Attack Simulation
+- Built-in simulator allows testing of brute-force and DDoS scenarios to observe how Rakshak.AI handles them.
 
-Secure personal access
+### 🚀 Dockerized & Scalable
+- Fully dockerized for easy setup.
+- Supports scalable deployment with MongoDB, Node.js, and React apps in containers.
 
-⚙️ Real-Time Logging & Detection
-GeoIP + Abuse IP Database: Each IP is checked against abuse records
+---
 
-Country Flag Integration: View where threats are coming from
+## 🛠️ Technologies Used
 
-Log Storage: All traffic logs stored in MongoDB with timestamps
+- **Frontend**: React.js, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB with Mongoose
+- **Docker**: Multi-container setup using `docker-compose`
+- **Security APIs**: AbuseIPDB for reputation scoring, GeoIP Lookup
+- **Others**: JWT Auth, Context API, Axios, Toastify, Chart.js
 
-💻 Attack Simulator
-Located inside attack-simulator/ folder.
+---
 
-Brute Force Script: Tests how the system responds to login attacks
+## 📦 How to Run the Project
 
-DDoS Simulator: Sends multiple fake requests to mimic traffic floods
+### Step 1: Clone the Repository
 
-👥 Team – Code Genius
-Name	Role
-Chandrabhan Gadeshwar	Backend Developer, Python Scripts
-Shubham Uprade	Full Stack Developer – Frontend & Backend
-
-🏆 Hackathon Participation
-This project was built for the Triwizardathon Hackathon.
-It showcases real-time security intelligence, automation, and safe simulation of attacks in a production-ready environment.
-
-# 1. Clone the repo
+```bash
 git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git
-
-# 2. Navigate into the folder
 cd Rakshak.Ai-Final
-
-# 3. Start services with Docker
-docker-compose up --build
-
-# App will be live at: http://localhost:3000
