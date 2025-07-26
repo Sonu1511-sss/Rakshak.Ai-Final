@@ -14,7 +14,6 @@
 
 ---
 
-
 ## 📁 Folder Structure
 
 ```bash
@@ -39,172 +38,194 @@ Rakshak.Ai/
 ├── docker-compose.yml          # Orchestrates all services
 └── README.md                   # Documentation
 
-# 🛡️ Rakshak.AI - Real-Time Threat Detection & Defense Dashboard
-
-Rakshak.AI is a full-stack cybersecurity platform designed to detect, simulate, and block real-time web threats. It provides both **Admin** and **User Dashboards**, live traffic monitoring, attack simulation, and integration with security APIs like AbuseIPDB and Geo-IP services.
-
----
-
-## 🌐 Features Overview
-
-### 🔐 Authentication System
+🌐 Features Overview
+🔐 Authentication System
 Role-based login secured using JWT tokens.
 
-- **Admin**: Full access to dashboards, logs, IP controls, and simulators.
-- **User**: Limited access to simulation tools and basic logs.
-- Secure routing ensures **no unauthorized access** to admin resources.
+Admin: Full access to dashboards, logs, controls, simulators.
 
----
+User: Limited access to view logs and simulate attacks.
 
-### 📊 Admin Dashboard Features
-The admin panel is designed for real-time visibility and control:
+Secure routing ensures no unauthorized access.
 
-- **Live Stats Panel**:
-  - Total requests
-  - Threats blocked
-  - Alerts triggered
-  - Countries tracked
-  - Anomalies detected
-  - Blocked IPs
+📊 Admin Dashboard Features
+Live Stats Panel:
 
-- **Interactive Graphs (Chart.js)**:
-  - Weekly trends of traffic
-  - Safe vs malicious request patterns
+Total requests
 
----
+Threats blocked
 
-### 🌍 Geo-IP Detection & Mapping
-- Integrates with **ip-api.com** and **ipinfo.io**
-- Converts each IP into:
-  - Country name & flag
-  - ISP
-  - Geo coordinates
-- Filter and analyze by country to detect region-based attacks.
+Alerts triggered
 
----
+Countries tracked
 
-### 📡 Real-Time Traffic Logs
-Live monitoring and updating logs every 3 seconds.
+Anomalies detected
 
-- Logs contain:
-  - IP Address
-  - Country
-  - ISP
-  - Method & URL
-  - Time of request
-  - Threat detected (if any)
-  - Status (Safe, Suspicious, Blocked)
+Blocked IPs
 
-- **Color-coded Log View**:
-  - 🟩 Green: Safe
-  - 🟨 Yellow: Suspicious
-  - 🟥 Red: Blocked
+Charts & Graphs (Chart.js):
 
----
+Visual analytics over the past 7 days
 
-### 💥 Attack Simulation Tools
-Simulate attacks for learning, testing, and demoing defense:
+Trends of safe vs malicious traffic
 
-- `flood.sh`: HTTP Flood (DDoS simulation)
-- `brute-force.sh`: Repeated login attempts
-- `stuffing.js`: Credential stuffing simulation
-- Also accessible via the Web UI Simulator tab
+🌍 Geo-IP Detection & Mapping
+Uses ip-api.com and ipinfo.io for:
 
----
+Country name
 
-### 🛡️ Real-Time Threat Detection
-AI-like backend logic to detect and block in real time:
+Flag emoji
 
-- Detects:
-  - Brute-force patterns
-  - DDoS/flooding attempts
-  - Bot headers & anomalies
-- **IP Blocking**:
-  - Automatically blocks IPs
-  - Stores in MongoDB
-  - Admin can manually unblock via dashboard
+ISP & Region info
 
----
+Filter and trace attacks by location and ISP.
 
-### 🧭 UI Navigation & Pages
-Built with **React.js + Tailwind CSS**, routes are role-based:
+📡 Real-Time Traffic Logs
+Updates every 3 seconds showing:
 
-| Path             | Description                         |
-|------------------|-------------------------------------|
-| `/login`         | Secure login for Admin & User       |
-| `/dashboard`     | Role-based dashboard                |
-| `/logs`          | Real-time traffic logs              |
-| `/alerts`        | View blocked/malicious alerts       |
-| `/control`       | Admin control for IP blocking       |
-| `/simulators`    | Trigger test attacks                |
-| `/logout`        | End session securely                |
+IP Address
 
----
+Country
 
-## 🛠️ Technologies Used
+ISP
 
-| Layer       | Stack                                 |
-|-------------|----------------------------------------|
-| Frontend    | React.js, Tailwind CSS, Axios, Toastify |
-| Backend     | Node.js, Express.js, JWT Auth         |
-| Database    | MongoDB with Mongoose ORM             |
-| Security    | AbuseIPDB API, ip-api.com, ipinfo.io  |
-| Charts      | Chart.js for real-time data viz       |
-| DevOps      | Docker + Docker Compose               |
+Method & URL
 
----
+Time
 
-## 🧪 Sample Log Format
+Threat
 
+Status
 
----
+📥 Detection Log Format
 
-## 📦 How to Run the Project (Dev Setup)
+| IP Address   | Country    | ISP    | Method | URL        | Time  | Threat      | Status  |
+| ------------ | ---------- | ------ | ------ | ---------- | ----- | ----------- | ------- |
+| 92.183.XX.XX | 🇮🇳 India | Airtel | GET    | /api/login | 13:41 | Brute Force | Blocked |
 
-### Prerequisites
-- Docker & Docker Compose installed
-- Ports `5173`, `5000`, and `27017` free
+Color-coded entries:
 
-### 🔧 Steps
+🟩 Safe (Green)
 
-```bash
+🟨 Suspicious (Yellow)
+
+🟥 Malicious/Blocked (Red)
+
+💥 Attack Simulation Tools
+Simulate real-world attacks using built-in tools:
+
+flood.sh: HTTP Flood (DDoS simulation)
+
+brute-force.sh: Login brute-force attempts
+
+stuffing.js: Credential stuffing simulation
+
+All accessible via the Web UI
+
+🛡️ Real-Time Threat Detection
+Backend middleware inspects every request:
+
+Detects brute-force, bots, floods
+
+Flags anomalies and applies block logic
+
+Blocked IPs:
+
+Stored in MongoDB
+
+Admins can manually unblock via control panel
+
+🧭 UI Navigation & Pages
+
+| Route         | Purpose                           |
+| ------------- | --------------------------------- |
+| `/login`      | Secure Login                      |
+| `/dashboard`  | Role-based Dashboard (Admin/User) |
+| `/logs`       | View Real-time Logs               |
+| `/alerts`     | View Blocked/Malicious Traffic    |
+| `/control`    | Admin Panel for IP Control        |
+| `/simulators` | Attack Simulation Page            |
+| `/logout`     | Secure Logout Function            |
+
+🛠️ Technologies Used
+
+| Layer    | Stack                                   |
+| -------- | --------------------------------------- |
+| Frontend | React.js, Tailwind CSS, Axios, Toastify |
+| Backend  | Node.js, Express.js, JWT Auth           |
+| Database | MongoDB + Mongoose ORM                  |
+| Security | AbuseIPDB API, ip-api.com, ipinfo.io    |
+| Charts   | Chart.js for stats visualization        |
+| DevOps   | Docker + Docker Compose                 |
+
+📦 How to Run the Project (Dev Setup)
+⚙️ Prerequisites
+Install Docker & Docker Compose
+
+Ensure ports 5173, 5000, and 27017 are free
+
+🧪 Setup Instructions
+
 # 1. Clone the repository
 git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final.git
 cd Rakshak.Ai-Final
 
-# 2. Build and Run with Docker
+# 2. Run with Docker Compose
 docker-compose up --build
 
-Then visit:
-Frontend – http://localhost:3000
-Backend – http://localhost:5000
+🔗 Access Locally
+Frontend → http://localhost:3000
+
+Backend → http://localhost:5000
 
 🔐 Security & Privacy
-JWT-based token authentication
+JWT-secured sessions for users
 
-Secure routing for sensitive routes
+MongoDB stores logs/IPs securely
 
-Logs and IPs stored in encrypted MongoDB collections
+IPs verified via third-party APIs
 
-Optional integration with AbuseIPDB for enhanced protection
+Manual and auto threat blocking
+
+No data shared unless permitted
 
 🚀 Future Roadmap
-🧠 AI-powered anomaly detection
+🧠 ML-based Threat Scoring System
 
-🌐 Live heatmap of global threats
+🌐 Global Heatmap for Attacks
 
-🔔 Email/SMS alerting system (Twilio)
+🔔 Email/SMS Alerts (via Twilio)
 
-📡 WebSocket-based live updates
+📡 WebSocket Live Log Updates
 
-📊 Machine Learning for threat scoring
+🤖 AI Analysis of Bot vs Human Traffic
 
 👥 Who Should Use This?
-👨‍💻 Hackathon & Cybersecurity Students
+🔐 Hackathon Cybersecurity Projects
 
-🧪 Pen-testing & Security Simulation
+🎓 Security Students or Trainers
 
-🏢 Internal Security Teams for monitoring
+🏢 Internal Security Demonstrations
 
-📚 Trainers/Institutions teaching real-time defense
+📊 Real-Time Demo Environments
 
+🤝 License & Credits
+🛠 Built with ❤️ by Team Code Genius
+
+👨‍💻 Contributors:
+
+Shubham Uprade – Frontend & Backend Development
+
+Chandrabhan Gadeshwar – Backend & Python Development
+
+💡 Inspired by the vision of creating intelligent and real-time cybersecurity solutions to safeguard digital systems from evolving threats.
+
+🔐 This project is open-source and distributed under a custom license provided in the repository. Please refer to the LICENSE file for details.
+---
+
+Let me know if you'd like:
+- A downloadable `.md` version
+- A project page/landing page version
+- Auto-deployment on GitHub Pages or Vercel
+
+Would you like this `README.md` pushed to your GitHub project directly via instructions?
