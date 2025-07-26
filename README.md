@@ -110,7 +110,7 @@ bolt-ai/
 ## 🔁 Dev Setup & Run
 
 ```bash
-git clone https://github.com/Sonu1511-sss/Rakshak.Ai
+git clone https://github.com/Sonu1511-sss/Rakshak.Ai-Final
 cd bolt-ai
 docker-compose up --build
 ```
