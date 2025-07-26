@@ -1,7 +1,7 @@
 # 🚨 Rakshak.AI - Real-Time Threat Detection & Protection System
 
 **Rakshak.AI** is an intelligent, real-time cyber threat detection and protection system designed to monitor, detect, and block unauthorized access, malicious IPs, and cyberattacks as they happen. Built for Hackathons like [Triwizardathon](https://triwizardathon.com/), this project provides a full-stack secure infrastructure using cutting-edge tools.
-<<<<<<< HEAD
+
 
 ---
 
@@ -13,7 +13,6 @@
 - **Chandrabhan Gadeshwar**  
   *Backend API, Python Scripting, Threat Simulation, Docker Integration*
 =======
->>>>>>> af25fc9 (update)
 
 ---
 
@@ -51,7 +50,6 @@ Rakshak.Ai/
 ├── attack-simulator/           # Python scripts for simulating attacks
 ├── docker-compose.yml          # Orchestrates all services
 └── README.md                   # Documentation
-<<<<<<< HEAD
 =======
 
 # 🛡️ Rakshak.AI - Real-Time Threat Detection & Defense Dashboard
@@ -80,7 +78,6 @@ Role-based login secured using JWT tokens.
 
 Secure routing ensures no unauthorized access.
 
-<<<<<<< HEAD
 📊 Admin Dashboard Features
 Live Stats Panel:
 
@@ -100,11 +97,9 @@ The admin panel is designed for real-time visibility and control:
 - **Interactive Graphs (Chart.js)**:
   - Weekly trends of traffic
   - Safe vs malicious request patterns
->>>>>>> af25fc9 (update)
 
 Threats blocked
 
-<<<<<<< HEAD
 Alerts triggered
 
 Countries tracked
@@ -116,11 +111,9 @@ Countries tracked
   - ISP
   - Geo coordinates
 - Filter and analyze by country to detect region-based attacks.
->>>>>>> af25fc9 (update)
 
 Anomalies detected
 
-<<<<<<< HEAD
 Blocked IPs
 
 Charts & Graphs (Chart.js):
@@ -141,11 +134,9 @@ Live monitoring and updating logs every 3 seconds.
   - 🟩 Green: Safe
   - 🟨 Yellow: Suspicious
   - 🟥 Red: Blocked
->>>>>>> af25fc9 (update)
 
 Visual analytics over the past 7 days
 
-<<<<<<< HEAD
 Trends of safe vs malicious traffic
 
 🌍 Geo-IP Detection & Mapping
@@ -158,11 +149,10 @@ Simulate attacks for learning, testing, and demoing defense:
 - `brute-force.sh`: Repeated login attempts
 - `stuffing.js`: Credential stuffing simulation
 - Also accessible via the Web UI Simulator tab
->>>>>>> af25fc9 (update)
 
 Country name
 
-<<<<<<< HEAD
+
 Flag emoji
 
 ISP & Region info
@@ -178,7 +168,6 @@ AI-like backend logic to detect and block in real time:
   - Automatically blocks IPs
   - Stores in MongoDB
   - Admin can manually unblock via dashboard
->>>>>>> af25fc9 (update)
 
 Filter and trace attacks by location and ISP.
 
